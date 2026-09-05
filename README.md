@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="frontend/images/logo.png" alt="Youtab Logo" width="420"/>
+<img src="youtab/frontend/images/logo.png" alt="Youtab Logo" width="420"/>
 
 # YOUTAB
 
