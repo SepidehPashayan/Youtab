@@ -2,6 +2,8 @@
 
 <img src="youtab/frontend/images/logo.png" alt="Youtab Logo" width="420"/>
 
+from Persia to tomorrow
+
 # YOUTAB
 
 ### Engineered for Speed.
