@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Youtab — Engineered for Speed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Teko:wght@500;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">YOU<span>T</span>AB</div>
+  <div class="nav-links">
+    <a href="#top"><img src="icon/home.png" alt="">Home</a>
+    <a href="#models"><img src="icon/car.png" alt="">Models</a>
+    <a href="#about"><img src="icon/circle.png" alt="">About</a>
+    <a href="#configure"><img src="icon/search.png" alt="">Configure</a>
+    <a href="#" id="navOrdersBtn" onclick="return handleOrdersClick(event)" style="display:none;"><img src="icon/circle.png" alt="">My Orders</a>
+    <a href="#" class="nav-signin" id="navAuthBtn" onclick="return handleNavAuthClick(event)"><img src="icon/man.png" alt="">Sign In</a>
+  </div>
+</nav>
+
+<!-- My Orders modal -->
+<div class="modal-overlay" id="ordersOverlay">
+  <div class="modal-box" style="width:min(520px, 94vw);">
+    <button type="button" class="modal-close" onclick="closeOrdersModal()">&times;</button>
+    <h3 style="font-family:'Teko',sans-serif; font-size:28px; margin-bottom:16px;">My Orders</h3>
+    <div id="ordersList" style="max-height:50vh; overflow-y:auto; display:flex; flex-direction:column; gap:12px;"></div>
+  </div>
+</div>
+
+<!-- Auth modal: Sign In / Sign Up -->
+<div class="modal-overlay" id="authOverlay">
+  <div class="modal-box">
+    <button type="button" class="modal-close" onclick="closeAuthModal()">&times;</button>
+    <div class="modal-tabs">
+      <button type="button" class="modal-tab active" data-tab="login" onclick="switchAuthTab('login')">Sign In</button>
+      <button type="button" class="modal-tab" data-tab="register" onclick="switchAuthTab('register')">Sign Up</button>
+    </div>
+    <div class="modal-error" id="authError"></div>
+
+    <form id="loginForm" class="auth-form active" onsubmit="return handleLogin(event)">
+      <div class="field"><label>Phone Number</label><input type="text" id="loginPhone" placeholder="0912xxxxxxx" required></div>
+      <div class="field"><label>Password</label><input type="password" id="loginPassword" required></div>
+      <button class="btn btn-primary" style="width:100%; padding:12px;" type="submit">Sign In</button>
+    </form>
+
+    <form id="registerForm" class="auth-form" onsubmit="return handleRegister(event)">
+      <div class="field"><label>Full Name</label><input type="text" id="regName" required></div>
+      <div class="row2">
+        <div class="field"><label>Phone Number</label><input type="text" id="regPhone" placeholder="0912xxxxxxx" required></div>
+        <div class="field"><label>National ID</label><input type="text" id="regNational" required></div>
+      </div>
+      <div class="field"><label>Password</label><input type="password" id="regPassword" required minlength="6"></div>
+      <button class="btn btn-primary" style="width:100%; padding:12px;" type="submit">Create Account</button>
+    </form>
+  </div>
+</div>
+
+<section class="hero" id="top">
+  <div class="grid-floor"></div>
+  <div class="trail" id="trail"></div>
+
+  <div class="speed-car" id="speedCar">
+    <svg viewBox="0 0 300 110" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="150" cy="98" rx="130" ry="6" fill="rgba(0,0,0,0.35)"/>
+      <path d="M15 72 Q10 40 50 34 L82 18 Q105 8 175 8 L212 18 Q240 26 262 52 L275 68 Q278 78 268 80 L15 80 Q6 78 15 72 Z" fill="#e8e9ec"/>
+      <path d="M88 20 Q112 10 172 10 L204 20 Q218 28 228 40 L115 40 Q98 34 88 20 Z" fill="#15161a" opacity=".9"/>
+      <circle cx="72" cy="80" r="22" fill="#0c0c0e"/><circle cx="72" cy="80" r="9" fill="#666"/>
+      <circle cx="222" cy="80" r="22" fill="#0c0c0e"/><circle cx="222" cy="80" r="9" fill="#666"/>
+      <rect x="258" y="52" width="16" height="9" rx="2" fill="#ffe9a8"/>
+      <rect x="12" y="56" width="10" height="7" rx="2" fill="#ff6b5e"/>
+    </svg>
+  </div>
+
+  <!-- Youtab logo artwork goes here (your own road-lettering + drifting-O
+       design). Sized proportionately, centered, no cropping. -->
+  <div class="wordmark-wrap" id="wordmark">
+    <img class="logo-img" src="images/logo.png" alt="Youtab">
+  </div>
+
+  <div class="tagline">From Persia to Tomorrow</div>
+
+  <div class="scroll-cue" id="scrollCue">Scroll<div class="bar"></div></div>
+</section>
+
+<section class="about" id="about">
+  <div>
+    <div class="eyebrow">About Youtab</div>
+    <h2>We don't build cars. We build the feeling of driving one.</h2>
+    <p>
+      Youtab is an Iranian idea for the future of car making — where the raw power of
+      an American muscle car meets the engineering precision of a European sport sedan.
+      Every Youtab model is designed around two feelings: the push into your seat under
+      acceleration, and total confidence through a corner. We're still at the concept
+      stage, but every detail on this page is part of a vision meant to become real.
+    </p>
+  </div>
+  <div class="stat-strip">
+    <div class="stat"><b>3.4s</b><span>0–100 km/h (Apex)</span></div>
+    <div class="stat"><b>290 km/h</b><span>Top speed (Vector)</span></div>
+    <div class="stat"><b>2</b><span>Concept lines, inspired by muscle car and sport sedan heritage</span></div>
+  </div>
+</section>
+
+<section class="models" id="models">
+  <div class="section-head">
+    <div class="eyebrow">Models</div>
+    <h2>The Youtab Lineup</h2>
+  </div>
+  <div class="model-grid">
+
+    <div class="model-card" data-model="kourosh">
+      <div class="model-tag">YOUTAB KOUROSH</div>
+      <h3>Muscle Coupe</h3>
+      <div class="model-desc">Raw acceleration, a raw engine note, wide-body styling drawn from American muscle car heritage.</div>
+      <div class="model-img-wrap">
+        <img id="kourosh-img" src="images/kourosh-black.png" alt="Youtab Kourosh">
+      </div>
+      <div class="swatches" data-target="kourosh-img">
+        <div class="swatch active" style="background:#0d0d0d" data-src="images/kourosh-black.png" data-name="Matte Black"></div>
+        <div class="swatch" style="background:#c22" data-src="images/kourosh-red.png" data-name="Ember Red"></div>
+        <div class="swatch" style="background:#5c6b2f" data-src="images/kourosh-green.png" data-name="Olive Green"></div>
+      </div>
+      <div class="model-foot">
+        <div class="price">2,850,000,000 <small>Toman</small></div>
+        <button class="btn btn-primary" onclick="selectForConfig('kourosh')">Select Model</button>
+      </div>
+    </div>
+
+    <div class="model-card" data-model="ario">
+      <div class="model-tag">YOUTAB ARIO</div>
+      <h3>Sport Sedan</h3>
+      <div class="model-desc">Balance, razor-sharp steering feel, and European luxury — inspired by German sport sedans.</div>
+      <div class="model-img-wrap">
+        <img id="ario-img" src="images/ario-black.png" alt="Youtab Ario">
+      </div>
+      <div class="swatches" data-target="ario-img">
+        <div class="swatch active" style="background:#0d0d0d" data-src="images/ario-black.png" data-name="Matte Black"></div>
+        <div class="swatch" style="background:#2b6cff" data-src="images/ario-blue.png" data-name="Ocean Blue"></div>
+        <div class="swatch" style="background:#8a8f98" data-src="images/ario-gray.png" data-name="Steel Gray"></div>
+      </div>
+      <div class="model-foot">
+        <div class="price">3,420,000,000 <small>Toman</small></div>
+        <button class="btn btn-primary" onclick="selectForConfig('ario')">Select Model</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="configurator" id="configure">
+  <div class="section-head">
+    <div class="eyebrow">Configure</div>
+    <h2>Build Your Youtab</h2>
+  </div>
+  <div class="config-box">
+    <div class="config-preview">
+      <img id="config-img" src="images/kourosh-black.png" alt="Preview">
+    </div>
+    <div class="config-details">
+      <h3 id="config-name">Youtab Kourosh</h3>
+      <div class="config-row"><span>Selected Color</span><b id="config-color">Matte Black</b></div>
+      <div class="config-row"><span>Warranty</span><b>5 years / 150,000 km</b></div>
+      <div class="config-row"><span>Estimated Delivery</span><b>Concept only — no real delivery</b></div>
+      <div class="total-row"><span>Total</span><span id="config-price">2,850,000,000 Toman</span></div>
+      <button class="btn btn-primary" style="width:100%; margin-top:20px; padding:14px;" onclick="goCheckout()">Continue to Checkout</button>
+    </div>
+  </div>
+</section>
+
+<section class="checkout" id="checkout">
+  <div class="section-head">
+    <div class="eyebrow">Checkout</div>
+    <h2>Complete Your Order</h2>
+  </div>
+  <div class="checkout-box">
+    <div class="demo-badge">DEMO PAYMENT — order is saved for real, no real money moves</div>
+
+    <div id="checkout-signed-out">
+      <p style="color:var(--muted); font-size:14px; margin-bottom:16px;">
+        You need an account to place an order — this is where your name, phone number,
+        and order history get saved.
+      </p>
+      <button class="btn btn-primary" style="width:100%; padding:14px;" onclick="openAuthModal()">Sign In / Sign Up to Continue</button>
+    </div>
+
+    <div id="checkout-form">
+      <div class="field"><label>Full Name</label><input type="text" id="coFullName" disabled></div>
+      <div class="row2">
+        <div class="field"><label>Phone Number</label><input type="text" id="coPhone" disabled></div>
+        <div class="field"><label>National ID</label><input type="text" id="coNational" disabled></div>
+      </div>
+      <div class="field"><label>Delivery Address</label><input type="text" id="coAddress" placeholder="City, street, no."></div>
+      <div class="row2">
+        <div class="field"><label>Card Number (demo)</label><input type="text" placeholder="6274 •••• •••• ••••"></div>
+        <div class="field"><label>Expiry</label><input type="text" placeholder="MM/YY"></div>
+      </div>
+      <div class="checkout-error" id="checkoutError"></div>
+      <button class="btn btn-primary pay-btn" onclick="fakePay()">Run Demo Payment <span id="pay-amount"></span></button>
+    </div>
+    <div class="success" id="success-box">
+      <svg class="check" viewBox="0 0 52 52"><circle cx="26" cy="26" r="24" fill="none" stroke="#ffb400" stroke-width="3"/><path fill="none" stroke="#ffb400" stroke-width="4" stroke-linecap="round" d="M15 27l7 7 16-16"/></svg>
+      <h3>Demo payment successful</h3>
+      <p class="success-note">This is just a UI demo — no real payment was processed.</p>
+    </div>
+  </div>
+</section>
+
+<footer>© Youtab Concept — an idea for the future. All models are conceptual and built for portfolio purposes.</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>
